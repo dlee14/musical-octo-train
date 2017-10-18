@@ -16,14 +16,15 @@ struct song {
   struct song* next;
 };
 
-int index_of_a(char name[]) {
+int index_of(char name[]) {
   char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
-  strstr(alphabet, tolower(name[0]));
-  return strstr(alphabet, tolower(name[0]));
+  char *ptr = strchr(alphabet, name[0]);
+  int index = ptr - alphabet;
+  return index;
 }
 
 int main() {
-  printf("%s\n", index_of_a("d"));
+  printf("%d\n", index_of("def"));
   return 0;
 }
 
