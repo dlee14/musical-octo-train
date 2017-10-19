@@ -34,10 +34,9 @@ void print_list(struct song* list) {
   printf("NULL\n");
 }
 
-struct song* insert_front(struct song* front, struct song* song) {
-  struct song* new = (struct song *)malloc(sizeof(struct song));
-  new->next = front;
-  return new;
+struct song* insert_front(struct song* curr_list, struct song* song) {
+  song->next = curr_list;
+  return song;
 }
 
 // struct song* insert_order(struct song* front, struct song* song) {
@@ -59,7 +58,8 @@ int main() {
   struct song* test2 = (struct song *)malloc(sizeof(struct song));
   strcpy(test2->name, "rockstar");
   strcpy(test2->artist, "Post Malone");
-  printf("%d\n", index_of("def"));
-  print_list(insert_front(test1, test2));
+  print_list(test1);
+  struct song* playlist = insert_front(test1, test2);
+  print_list(playlist);
   return 0;
 }
