@@ -3,6 +3,8 @@
 #include <ctype.h>
 #include <string.h>
 
+struct song song_list[26];
+
 struct song {
   char name[256];
   char artist[256];
@@ -18,7 +20,7 @@ void add_song(char name[], char artist[]);
 int index_of(char song_name[]) {
   char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
 
-  //fiding the first occurence of the lowercase of the first character
+  //finding the first occurence of the lowercase of the first character
   char *ptr = strchr(alphabet, tolower(song_name[0]));
 
   //find the address difference
@@ -39,27 +41,32 @@ struct song* insert_front(struct song* curr_list, struct song* song) {
   return song;
 }
 
-// struct song* insert_order(struct song* front, struct song* song) {
-//   struct song* new = (struct song *)malloc(sizeof(struct song));
-//   struct song* order = (struct song *)malloc(sizeof(struct song));
-//   while (strcmp(song->artist, order->artist) > 0) {
-//     printf("%d\n", strcmp(song->artist, order->artist));
-//     order = front->next;
-//   }
-//   new->next = front;
-//   printf("executed successfully/n");
-//   return new;
-// }
+struct song* insert_order(struct song* curr_list, struct song* song) {
+  int ind = index_of(song->name[0]);
+  struct song* curr_song = (struct song *)malloc(sizeof(struct song));
+   while (!curr_song && strcmp(song->artist, order->artist) < 0) {
+     //printf("entered loop\n");
+     //printf("%d\n", strcmp(song->artist, order->artist));
+     curr_song = curr_list->next;
+     //printf("Didn't eff up yet\n");
+   }
+   song->next = curr_list;
+   return song;
+ }
 
 int main() {
-  struct song* test1 = (struct song *)malloc(sizeof(struct song));
-  strcpy(test1->name, "Sorry");
-  strcpy(test1->artist, "Justin Bieber");
-  struct song* test2 = (struct song *)malloc(sizeof(struct song));
-  strcpy(test2->name, "rockstar");
-  strcpy(test2->artist, "Post Malone");
-  print_list(test1);
-  struct song* playlist = insert_front(test1, test2);
+  struct song* song1 = (struct song *)malloc(sizeof(struct song));
+  strcpy(song1->name, "Feel It Still");
+  strcpy(song1->artist, "Portugal the Man");
+  struct song* song2 = (struct song *)malloc(sizeof(struct song));
+  strcpy(song2->name, "Houdini");
+  strcpy(song2->artist, "Foster the People");
+  struct song* song3 = (struct song *)malloc(sizeof(struct song));
+  strcpy(song3->name, "I Would Do Anything For You");
+  strcpy(song3->artist, "Foster the People");
+  //print_list(song1);
+  struct song* playlist = insert_order(song1, song2);
+  playlist = insert_order(playlist, song3);
   print_list(playlist);
   return 0;
 }
