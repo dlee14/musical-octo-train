@@ -15,17 +15,19 @@ struct song* find_song(char song[]);
 struct song* find_first_song(char artist[]);
 void add_song(char name[], char artist[]);
 
+//finds the index of a letter in the alphabet
 int index_of(char* s) {
   char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
-
+  
   //finding the first occurence of the lowercase of the first character
-  char *ptr = strchr(alphabet, tolower(s));
+  char *ptr = strchr(alphabet, tolower(*s));
 
   //find the address difference
   int index = ptr - alphabet;
   return index;
 }
 
+//prints a linked list
 void print_list(struct song* list) {
   while (list) {
     printf("%s: %s\n", list->artist, list->name);
@@ -34,39 +36,40 @@ void print_list(struct song* list) {
   printf("NULL\n");
 }
 
+//inserts a song node at the front of a linked list
 struct song* insert_front(struct song* curr_list, struct song* song) {
   song->next = curr_list;
   return song;
 }
 
-struct song* insert_order(struct song* songs[], struct song* new_song) {  
-  int ind = index_of(new_song->name[0]);
+//inserts a song node in the correct alphabetical order
+struct song* insert_order(struct song* songs, struct song* new_song) {  
+  //int ind = index_of(new_song->name[0]);
+  //if(!songlist->next
   struct song* curr_song = (struct song *)malloc(sizeof(struct song*));
-  curr_song = songs[ind];
-  printf("Que pasa\n");
-  while (curr_song != 0 && strcmp(new_song->artist, curr_song->artist) < 0) {
-     printf("entered loop\n");
-     printf("%d\n", strcmp(new_song->artist, curr_song->artist));
-     
-     curr_song = curr_song->next;
-     //printf("Didn't eff up yet\n");
-   }
-   curr_song = insert_front(curr_song, new_song);
-   songs[ind] = curr_song;
-   return songs;
+  curr_song = songs;
+  //printf("Que pasa\n");
+  while (curr_song && strcmp(new_song->artist, curr_song->artist) < 0) {;
+    //ignore
+    //printf("%d\n", *curr_song->name); //segfault here 
+    //printf("%d\n", *curr_song->artist); //segfault here 
+    //printf("%d\n", *curr_song->next); //segfault here 
+
+    curr_song = curr_song->next;
+  }
+  //insert, keep track of nodes in front and behind
+  struct song *p = curr_song->next;
+  curr_song->next =  new_song;
+  new_song->next = p;
+  songs = curr_song;
+  return songs;
 }
 
 
 int main() {
   printf("--------Creating Initial Playlist--------\n\n");
-  struct song* songlist[26];
-  struct song* songptr = songlist;
-  int i;
-  for (i = 0; i < 3; i ++)
-    {
-      songlist[i] = (struct song *)calloc(1 ,sizeof(struct song));
-      printf("%s\n", &songlist[i]);
-    }
+  struct song* songlist;
+  songlist = (struct song *)calloc(1,sizeof(struct song));
   
   printf("\n--------Songs--------\n\n");
   printf("....'Feel It Still' by Portugal the Man....\n");
@@ -84,11 +87,16 @@ int main() {
   strcpy(song3->name, "I Would Do Anything For You");
   strcpy(song3->artist, "Foster the People");
 
+  //--
+  //songptr = song1;
+
   printf("\n--------Adding Songs--------\n\n");
-  printf("Hello?\n");
-  songptr  = insert_order(songlist, song2);
+  //printf("Hello?\n");
+  songlist  = insert_order(songlist, song1);
+  songlist  = insert_order(songlist, song2);
+  songlist  = insert_order(songlist, song3);
   // playlist = insert_order(playlist, song3);
   //print_list(playlist);
-  print_list(&songptr);
+  print_list(songlist);
   return 0;
 }
