@@ -21,7 +21,7 @@ int main() {
   insert_order(songlib , "Feel It Still", "Portugal the Man");
   insert_order(songlib , "Houdini", "Foster the People");
   insert_order(songlib, "I Would Do Anything For You", "Foster the People");
-  
+
   print_lib(songlib);
 
   printf("\n\nFinding 'Foster the People'\n\n");
