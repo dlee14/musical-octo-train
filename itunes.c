@@ -9,22 +9,22 @@
 
 int main() {
   printf("--------Creating Initial Playlist--------\n\n");
-  struct song* songlist;
-  songlist = (struct song *)calloc(1,sizeof(struct song));
-  
-  printf("\n--------Songs--------\n\n");
-
-
+  struct song* songlib [26];
+  int i = 0;
+  while(songlib [i])
+    {
+      songlib[i] = 0;
+      i ++;
+    }
 
   printf("\n--------Adding Songs--------\n\n");
-  //printf("Hello?\n");
-  struct song* a = insert_front(a, "Feel It Still", "Portugal the Man");
-  a = insert_order(a, "Houdini", "Foster the People");
-  a = insert_order(a, "I Would Do Anything For You", "Foster the People");
+  insert_order(songlib , "Feel It Still", "Portugal the Man");
+  insert_order(songlib , "Houdini", "Foster the People");
+  insert_order(songlib, "I Would Do Anything For You", "Foster the People");
   
-  print_list(a);
+  print_lib(songlib);
 
   printf("\n\nFinding 'Foster the People'\n\n");
-  print_list(find_artist(a, "Foster the People"));
+  //print_lib(find_artist(songlib, "Foster the People"));
   return 0;
 }
