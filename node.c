@@ -27,6 +27,20 @@ struct song* insert_order(struct song* songs, struct song* new_song) {
   return songs;
 }
 
+struct song * insert_songs(struct song* songlist, struct song* list[])
+{
+  struct song * ptr;
+  int i = 0;
+  while (list[i])
+    {
+      printf("loopin\n");
+      ptr = insert_order(songlist, list[i]);
+      i++;
+    }
+  printf("done\n");
+  return ptr;
+}
+
 //Matches song title & artist
 struct song* find(struct song*playlist, char *song_name, char *artist){
   while (playlist){

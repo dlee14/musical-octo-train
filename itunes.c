@@ -38,18 +38,31 @@ int main() {
   strcpy(song5->name, "1979");
   strcpy(song5->artist, "The Smashing Pumpkins");
 
+  printf("....'Is This It' by The Strokes....\n");
+  struct song* song6 = (struct song*)malloc(sizeof(struct song));
+  strcpy(song6->name, "Is This It");
+  strcpy(song6->artist, "The Strokes");
+
+
   //--
   //songptr = song1;
 
   printf("\n--------Adding Songs--------\n\n");
   //printf("Hello?\n");
-  songlist  = insert_order(songlist, song1);
+  struct song* all[] = {song1,song2, song3, song4, song4, song5, song6, 0};
+  songlist  = insert_songs(songlist, all);
+  /*
   songlist  = insert_order(songlist, song2);
   songlist  = insert_order(songlist, song3);
   songlist  = insert_order(songlist, song4);
   songlist  = insert_order(songlist, song5);
+  songlist  = insert_order(songlist, song6);
+  */
   // playlist = insert_order(playlist, song3);
   //print_list(playlist);
   print_list(songlist);
+
+  printf("\n\nFinding 'The Strokes'\n\n");
+  //print_list(find_artist(songlist, "The Strokes"));
   return 0;
 }
