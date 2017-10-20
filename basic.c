@@ -15,7 +15,7 @@ int index_of(char* s) {
 }
 
 //prints a linked list
-void print_lib(struct song* lib[]) {
+void print_list(struct song* lib[]) {
   int i = 0;
   struct song* list;
   while (lib[i]) {
