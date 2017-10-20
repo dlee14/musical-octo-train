@@ -46,7 +46,7 @@ struct song* find(struct song*playlist, char *song_name, char *artist){
       return playlist;
     playlist = playlist->next;
   }
-  return 0;
+  return playlist;
 }
 
 //Matches an artist
