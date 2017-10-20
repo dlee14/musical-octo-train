@@ -1,18 +1,31 @@
 //inserts a song node at the front of a linked list
-struct song* insert_front(struct song* list, char* name, char* artist) {
+struct song* insert_front(struct song* list, char* name, char* artist)
+{
   return create_node(list, name, artist);
 }
 
+void insert_order(struct song* lib[], char* name, char* artist)
+{
+  lib[index_of(artist)] = insert_order_help(lib[index_of(artist)], name, artist);
+}
+
 //inserts a song node in the correct alphabetical order
-struct song* insert_order(struct song* list, char* name, char* artist) {  
+struct song* insert_order_help(struct song* list, char* name, char* artist)
+{  
   struct song *first = list; //pointer to beginning of list
-  if (!list || (strcmp(artist, list->artist) < 0) || (strcmp(artist, list->artist) == 0 && strcmp(name, list->name) <= 0))
-    return create_node(list, name, artist);
-  while (list->next && strcmp(artist, list->next->artist) > 0)
-    list = list->next;
-  while (list->next && strcmp(name, list->next->name) > 0)
-    list = list->next;
+  //if list doesn't have any songs, make a new song node
+  if (!list)
+    {
+      return create_node(list, name, artist);
+    }
+  //compares song names
+  while (list->next && strcmp(name, list->name) < 0)
+    {
+      printf("%s\n", "comp name");
+      list = list->next;
+    }
   list->next = create_node(list->next, name, artist);
+  printf("done\n");
   return first;
 }
 
