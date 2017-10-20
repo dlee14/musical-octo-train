@@ -4,7 +4,7 @@
 #include <string.h>
 #include "head.h"
 #include "basic.c"
-#include "insert.c"
+#include "node.c"
 
 
 int main() {

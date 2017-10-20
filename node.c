@@ -30,7 +30,7 @@ struct song* insert_order(struct song* songs, struct song* new_song) {
 //Matches song title & artist
 struct song* find(struct song*playlist, char *song_name, char *artist){
   while (playlist){
-    if (strcmp(name, playlist->name) == 0 && strcmp(artist, playlist->artist) == 0)
+    if (strcmp(song_name, playlist->name) == 0 && strcmp(artist, playlist->artist) == 0)
       return playlist;
     playlist = playlist->next;
   }
@@ -38,12 +38,12 @@ struct song* find(struct song*playlist, char *song_name, char *artist){
 }
 
 //Matches an artist
-struct song*find_song(struct song*playlist, char *artist){
+struct song* find_artist(struct song*playlist, char *artist){
   while (playlist){
     if (strcmp(artist, playlist->artist) == 0)
       return playlist;
     playlist = playlist->next;
   }
-  return 0;
+  return playlist;
 }
 
