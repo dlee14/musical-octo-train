@@ -39,13 +39,15 @@ struct song* insert_front(struct song* curr_list, struct song* song) {
   return song;
 }
 
-struct song* insert_order(struct song songs[], struct song* new_song) {  
+struct song* insert_order(struct song* songs[], struct song* new_song) {  
   int ind = index_of(new_song->name[0]);
-  struct song curr_song = songs[ind];//(struct song *)malloc(sizeof(struct song*));
-  //curr_song = songs[ind];
-  while (!curr_song && strcmp(new_song->artist, curr_song->artist) < 0) {
-     //printf("entered loop\n");
-     //printf("%d\n", strcmp(song->artist, curr_song->artist));
+  struct song* curr_song = (struct song *)malloc(sizeof(struct song*));
+  curr_song = songs[ind];
+  printf("Que pasa\n");
+  while (curr_song != 0 && strcmp(new_song->artist, curr_song->artist) < 0) {
+     printf("entered loop\n");
+     printf("%d\n", strcmp(new_song->artist, curr_song->artist));
+     
      curr_song = curr_song->next;
      //printf("Didn't eff up yet\n");
    }
@@ -62,7 +64,8 @@ int main() {
   int i;
   for (i = 0; i < 3; i ++)
     {
-      songlist[i] = (struct song *)malloc(sizeof(struct song));
+      songlist[i] = (struct song *)calloc(1 ,sizeof(struct song));
+      printf("%s\n", &songlist[i]);
     }
   
   printf("\n--------Songs--------\n\n");
@@ -82,6 +85,7 @@ int main() {
   strcpy(song3->artist, "Foster the People");
 
   printf("\n--------Adding Songs--------\n\n");
+  printf("Hello?\n");
   songptr  = insert_order(songlist, song2);
   // playlist = insert_order(playlist, song3);
   //print_list(playlist);
