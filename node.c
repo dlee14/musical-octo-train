@@ -1,45 +1,30 @@
 //inserts a song node at the front of a linked list
-struct song* insert_front(struct song* curr_list, struct song* song) {
-  song->next = curr_list;
-  return song;
+struct song* insert_front(struct song* list, char* name, char* artist) {
+  return create_node(list, name, artist);
 }
 
 //inserts a song node in the correct alphabetical order
-struct song* insert_order(struct song* songs, struct song* new_song) {  
-  //int ind = index_of(new_song->name[0]);
-  struct song* curr_song = (struct song *)malloc(sizeof(struct song*));
-  curr_song = songs;
-  //printf("Que pasa\n");
-  while (curr_song && strcmp(new_song->artist, curr_song->artist) < 0) {;
-    //ignore
-    //printf("%d\n", *curr_song->name); //segfault here 
-    //printf("%d\n", *curr_song->artist); //segfault here 
-    //printf("%d\n", *curr_song->next); //segfault here 
-
-    curr_song = curr_song->next;
-  }
-  //insert, keep track of nodes in front and behind
-  struct song *p = curr_song->next;
-  curr_song->next =  new_song;
-  new_song->next = p;
-  songs = curr_song;
-  return songs;
+struct song* insert_order(struct song* list, char* name, char* artist) {  
+  struct song *first = list; //pointer to beginning of list
+  if (!list || (strcmp(artist, list->artist) < 0) || (strcmp(artist, list->artist) == 0 && strcmp(name, list->name) <= 0))
+    return create_node(list, name, artist);
+  while (list->next && strcmp(artist, list->next->artist) > 0)
+    list = list->next;
+  while (list->next && strcmp(name, list->next->name) > 0)
+    list = list->next;
+  list->next = create_node(list->next, name, artist);
+  return first;
 }
 
-struct song * insert_songs(struct song* songlist, struct song* list[])
+struct song* create_node(struct song* next, char* name, char* artist)
 {
-  struct song * ptr;
-  int i = 0;
-  while (list[i])
-    {
-      printf("loopin\n");
-      ptr = insert_order(songlist, list[i]);
-      print_list(ptr);
-      i++;
-    }
-  printf("done\n");
-  return ptr;
+  struct song* ret = (struct song*)malloc(sizeof(struct song));
+  strcpy(ret->name, name);
+  strcpy(ret->artist, artist);
+  ret->next = next;
+  return ret;
 }
+
 
 //Matches song title & artist
 struct song* find(struct song*playlist, char *song_name, char *artist){

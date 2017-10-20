@@ -14,7 +14,7 @@ int index_of(char* s) {
 void print_list(struct song* list) {
   while (list) {
     printf("%s: %s\n", list->artist, list->name);
-    printf("bug\n");
+    //printf("bug\n");
     list = list->next;
   }
   printf("NULL\n");
