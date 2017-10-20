@@ -10,4 +10,3 @@ clean:
 	rm -f *~ *.o
 run: all
 	./music
-
