@@ -7,7 +7,6 @@ struct song* insert_front(struct song* curr_list, struct song* song) {
 //inserts a song node in the correct alphabetical order
 struct song* insert_order(struct song* songs, struct song* new_song) {  
   //int ind = index_of(new_song->name[0]);
-  //if(!songlist->next
   struct song* curr_song = (struct song *)malloc(sizeof(struct song*));
   curr_song = songs;
   //printf("Que pasa\n");
@@ -35,6 +34,7 @@ struct song * insert_songs(struct song* songlist, struct song* list[])
     {
       printf("loopin\n");
       ptr = insert_order(songlist, list[i]);
+      print_list(ptr);
       i++;
     }
   printf("done\n");
