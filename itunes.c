@@ -28,6 +28,16 @@ int main() {
   strcpy(song3->name, "I Would Do Anything For You");
   strcpy(song3->artist, "Foster the People");
 
+  printf("....'Under Cover of Darkness' by The Strokes....\n");
+  struct song* song4 = (struct song*)malloc(sizeof(struct song));
+  strcpy(song4->name, "Under Cover of Darkness");
+  strcpy(song4->artist, "The Strokes");
+
+  printf("....'1979' by The Smashing Pumpkins....\n");
+  struct song* song5 = (struct song*)malloc(sizeof(struct song));
+  strcpy(song5->name, "1979");
+  strcpy(song5->artist, "The Smashing Pumpkins");
+
   //--
   //songptr = song1;
 
@@ -36,6 +46,8 @@ int main() {
   songlist  = insert_order(songlist, song1);
   songlist  = insert_order(songlist, song2);
   songlist  = insert_order(songlist, song3);
+  songlist  = insert_order(songlist, song4);
+  songlist  = insert_order(songlist, song5);
   // playlist = insert_order(playlist, song3);
   //print_list(playlist);
   print_list(songlist);
