@@ -11,7 +11,7 @@ void insert_order(struct song* lib[], char* name, char* artist)
 
 //inserts a song node in the correct alphabetical order
 struct song* insert_order_help(struct song* list, char* name, char* artist)
-{
+{  
   struct song *first = list; //pointer to beginning of list
   //if list doesn't have any songs, make a new song node
   if (!list)
@@ -46,7 +46,7 @@ struct song* find(struct song*playlist, char *song_name, char *artist){
       return playlist;
     playlist = playlist->next;
   }
-  return playlist;
+  return 0;
 }
 
 //Matches an artist
@@ -58,3 +58,4 @@ struct song* find_artist(struct song*playlist, char *artist){
   }
   return playlist;
 }
+

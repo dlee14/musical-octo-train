@@ -11,3 +11,4 @@ void add_song(char name[], char artist[]);
 struct song* create_node(struct song* next, char* name, char* artist);
 void insert_order(struct song* lib[], char* name, char * artist);
 struct song* insert_order_help(struct song* list, char * name, char * artist); 
+
