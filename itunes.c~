@@ -9,13 +9,16 @@
 
 int main() {
   printf("--------Creating Initial Playlist--------\n\n");
-  struct song* songlib [26] = {0};
+  struct song* songlib [26];
+  int i = 0;
+  while(songlib [i])
+    {
+      songlib[i] = 0;
+      i ++;
+    }
 
-  print_lib(songlib);
   printf("\n--------Adding Songs--------\n\n");
   insert_order(songlib , "Feel It Still", "Portugal the Man");
-  printf("added ptheman\n");
-  print_lib(songlib);
   insert_order(songlib , "Houdini", "Foster the People");
   insert_order(songlib, "I Would Do Anything For You", "Foster the People");
   
