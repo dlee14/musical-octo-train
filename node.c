@@ -1,3 +1,5 @@
+#include "head.h"
+
 //inserts a song node at the front of a linked list
 struct song* insert_front(struct song* list, char* name, char* artist)
 {
@@ -21,7 +23,7 @@ struct song* insert_order_help(struct song* list, char* name, char* artist)
   //compares song names
   while (list->next && strcmp(name, list->name) < 0)
     {
-      printf("%s\n", "comp name");
+      printf("%s\n", list->next);
       list = list->next;
     }
   list->next = create_node(list->next, name, artist);

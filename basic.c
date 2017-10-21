@@ -1,3 +1,5 @@
+#include "head.h"
+
 //finds the index of a letter in the alphabet
 int index_of(char* s) {
   /*
@@ -13,7 +15,7 @@ int index_of(char* s) {
   return s[0] - 'a';
 }
 
-//prints a linked list
+//prints the songlibrary
 void print_lib(struct song* lib[]) {
   int i = 0;
   struct song* list;
