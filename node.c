@@ -53,21 +53,18 @@ struct song* create_node(struct song* next, char* name, char* artist)
 }
 
 
-//Matches song title & artist
-struct song* find(struct song*playlist, char *song_name, char *artist){
-  while (playlist){
-    if (strcmp(song_name, playlist->name) == 0 && strcmp(artist, playlist->artist) == 0)
-      return playlist;
-    playlist = playlist->next;
-  }
-  return 0;
+void find_artist(struct song* lib[], char* artist)
+{
+  lib[index_of(artist)] = find_artist_help(lib[index_of(artist)], artist);
 }
 
 //Matches an artist
-struct song* find_artist(struct song*playlist, char *artist){
+struct song* find_artist_help(struct song*playlist, char *artist){
   while (playlist){
     if (strcmp(artist, playlist->artist) == 0)
-      return playlist;
+      {
+	return playlist;
+      }
     playlist = playlist->next;
   }
   return playlist;

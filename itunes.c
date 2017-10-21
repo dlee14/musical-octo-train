@@ -14,14 +14,16 @@ int main() {
   print_lib(songlib);
   printf("\n--------Adding Songs--------\n\n");
   insert_order(songlib , "Feel It Still", "Portugal the Man");
-  printf("added ptheman\n");
-  print_lib(songlib);
   insert_order(songlib , "Houdini", "Foster the People");
   insert_order(songlib, "I Would Do Anything For You", "Foster the People");
+  insert_order(songlib, "Under Cover of Darkness", "The Strokes");
+  insert_order(songlib, "Is This It", "The Strokes");
+  insert_order(songlib, "Countdown", "Beyonce");
 
   print_lib(songlib);
 
-  printf("\n\nFinding 'Foster the People'\n\n");
-  //print_lib(find_artist(songlib, "Foster the People"));
+  printf("\n\nFinding 'The Strokes'\n\n");
+  find_artist(songlib, "The Strokes");
+  print_lib(songlib);
   return 0;
 }
