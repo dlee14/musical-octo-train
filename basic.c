@@ -1,25 +1,31 @@
+//add headers!!
+
+#include <ctype.h>
+#include <stdio.h>
 #include "head.h"
 
 //finds the index of a letter in the alphabet
 int index_of(char* s) {
-  /*
   char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
-  
+
   //finding the first occurence of the lowercase of the first character
   char *ptr = strchr(alphabet, tolower(*s));
 
   //find the address difference
   int index = ptr - alphabet;
-  */
-  s = tolower(s);
+  /*
+  s = (char*)putchar(tolower((int)s));
+  printf("%d\n", s[0]-'a');
   return s[0] - 'a';
+  */
 }
 
-//prints the songlibrary
+//prints a linked list
 void print_lib(struct song* lib[]) {
   int i = 0;
+  int j;
   struct song* list;
-  while (lib[i]) {
+  for (i = 0; i < 26; i++) {
     list = lib[i];
     while(list)
       {
@@ -27,7 +33,6 @@ void print_lib(struct song* lib[]) {
 	//printf("bug\n");
 	list = list->next;
       }
-    i ++;
   }
   printf("NULL\n");
 }

@@ -3,25 +3,22 @@
 #include <ctype.h>
 #include <string.h>
 #include "head.h"
-#include "basic.c"
-#include "node.c"
+//#include "basic.c"
+//#include "node.c"
 
 
 int main() {
   printf("--------Creating Initial Playlist--------\n\n");
-  struct song* songlib [26];
-  int i = 0;
-  while(songlib [i])
-    {
-      songlib[i] = 0;
-      i ++;
-    }
+  struct song* songlib [26] = {0};
 
+  print_lib(songlib);
   printf("\n--------Adding Songs--------\n\n");
   insert_order(songlib , "Feel It Still", "Portugal the Man");
+  printf("added ptheman\n");
+  print_lib(songlib);
   insert_order(songlib , "Houdini", "Foster the People");
   insert_order(songlib, "I Would Do Anything For You", "Foster the People");
-  
+
   print_lib(songlib);
 
   printf("\n\nFinding 'Foster the People'\n\n");
