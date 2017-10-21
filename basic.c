@@ -1,5 +1,8 @@
 //add headers!!
-
+#include <stdlib.h>
+#include <stdio.h>
+#include "time.h"
+#include <string.h>
 #include <ctype.h>
 #include <stdio.h>
 #include "head.h"
@@ -18,6 +21,7 @@ int index_of(char* s) {
   printf("%d\n", s[0]-'a');
   return s[0] - 'a';
   */
+  return index;
 }
 
 void print_song(struct song* song) {
@@ -36,6 +40,19 @@ void print_lib(struct song* lib[]) {
   while(i < 26) {
     print_list(lib[i]);
     i++;
+  }
+}
+
+//bad name
+void print_first_char(struct song* lib[], char* first_char) {
+  print_list(lib[index_of(first_char)]);
+}
+
+void print_artist(struct song* lib[], char* artist) {
+  //respective alphabet list
+  struct song* current = lib[index_of(artist)];
+  while (current) {
+    if (strcmp(current->artist, ))
   }
 }
 
