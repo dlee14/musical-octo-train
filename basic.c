@@ -20,23 +20,6 @@ int index_of(char* s) {
   */
 }
 
-//prints a linked list
-// void print_lib(struct song* lib[]) {
-//   int i = 0;
-//   int j;
-//   struct song* list;
-//   for (i = 0; i < 26; i++) {
-//     list = lib[i];
-//     while(list)
-//       {
-// 	printf("%s: %s\n", list->artist, list->name);
-// 	//printf("bug\n");
-// 	list = list->next;
-//       }
-//   }
-//   printf("NULL\n");
-// }
-
 void print_song(struct song* song) {
   printf("%s: %s\n", song->artist, song->name);
 }
