@@ -8,7 +8,7 @@
 
 
 int main() {
-  printf("--------Creating Initial Playlist--------\n\n");
+  printf("--------Initializing Song Library--------\n\n");
   struct song* songlib [26] = {0};
 
   print_lib(songlib);
@@ -28,7 +28,10 @@ int main() {
   print_lib(songlib);
 
   printf("\n\nFinding 'The Strokes'\n\n");
-  find_artist(songlib, "The Strokes");
-  //print_lib(songlib);
+  print_list(find_artist(songlib, "The Strokes"));
+
+  printf("\n\nFinding songs ONLY by 'Foster the People'\n\n");
+  print_artist(songlib, "Foster the People");
+  
   return 0;
 }

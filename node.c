@@ -92,22 +92,16 @@ struct song* create_node(struct song* next, char* name, char* artist)
 }
 
 
-void find_artist(struct song* lib[], char* artist)
-{
-  print_list(find_artist_help(lib[index_of(artist)], artist));
-}
-
-//Matches an artist
-struct song* find_artist_help(struct song* playlist, char *artist){
+//Returns a pointer to the artist being searched
+struct song* find_artist(struct song* lib[], char *artist){
+  struct song* playlist = lib[index_of(artist)];
   while (playlist){
     if (strcmp(artist, playlist->artist) == 0)
       {
 	return playlist;
       }
-    //print_song(playlist);
     playlist = playlist->next;
   }
-  printf("-------------------\n");
   return playlist;
 }
 
