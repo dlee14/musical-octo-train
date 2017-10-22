@@ -52,7 +52,9 @@ void print_artist(struct song* lib[], char* artist) {
   //respective alphabet list
   struct song* current = lib[index_of(artist)];
   while (current) {
-    if (strcmp(current->artist, ))
+    if (strcmp(current->artist, artist)) {
+
+    }
   }
 }
 

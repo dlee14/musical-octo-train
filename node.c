@@ -28,6 +28,7 @@ struct song* insert_order_help(struct song* list, char* name, char* artist) {
     {
       return create_node(list, name, artist);
     }
+    
   //compares song names
   while (list->next && strcmp(name, list->name) < 0)
     {
