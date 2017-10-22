@@ -30,8 +30,8 @@ int main() {
   printf("\n\nFinding 'The Strokes'\n\n");
   print_list(find_artist(songlib, "The Strokes"));
 
-  printf("\n\nFinding songs ONLY by 'Foster the People'\n\n");
-  print_artist(songlib, "Foster the People");
+  printf("\n\nFinding songs ONLY by 'The Strokes'\n\n");
+  print_artist(songlib, "The Strokes");
   
   return 0;
 }
