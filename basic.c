@@ -43,24 +43,21 @@ void print_lib(struct song* lib[]) {
   }
 }
 
-<<<<<<< HEAD
 //bad name
 void print_first_char(struct song* lib[], char* first_char) {
   print_list(lib[index_of(first_char)]);
 }
 
-void print_artist(struct song* lib[], char* artist) {
-  //respective alphabet list
-  struct song* current = lib[index_of(artist)];
-  while (current) {
-    if (strcmp(current->artist, artist)) {
+// void print_artist(struct song* lib[], char* artist) {
+//   //respective alphabet list
+//   struct song* current = lib[index_of(artist)];
+//   while (current) {
+//     if (strcmp(current->artist, artist)) {
+//
+//     }
+//   }
+// }
 
-    }
-  }
-}
-
-=======
->>>>>>> 9fc45b5c04d06fb059ccf2d3b70770617a8c9cb4
 int list_length(struct song* list) {
   int count = 0;
   while (list) {
@@ -100,7 +97,7 @@ void print_artist_help(struct song* list, char * artist)
 	}
       end = end->next;
     }
-  
+
   print_list_end(list, end);
 }
 
