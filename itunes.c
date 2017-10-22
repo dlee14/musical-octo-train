@@ -3,8 +3,6 @@
 #include <ctype.h>
 #include <string.h>
 #include "head.h"
-//#include "basic.c"
-//#include "node.c"
 
 
 int main() {
@@ -27,11 +25,18 @@ int main() {
 
   print_lib(songlib);
 
-  printf("\n\nFinding 'The Strokes'\n\n");
+  printf("\n\nFinding an artist: 'The Strokes'\n\n");
   print_list(find_artist(songlib, "The Strokes"));
 
   printf("\n\nFinding songs ONLY by 'The Strokes'\n\n");
   print_artist(songlib, "The Strokes");
+
+  printf("\n\nFinding entries in 'J' index\n\n");
+  print_letter(songlib, "j");
+
+  printf("\n\nFinding entries in 'T' index\n\n");
+  print_letter(songlib, "t");
+  
   
   return 0;
 }

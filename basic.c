@@ -26,8 +26,12 @@ void print_list(struct song* list) {
 void print_list_end(struct song* list, struct song* end)
 {
   while(list != end) {
-    print_song(list);
-    list = list->next;
+    if (!list){}
+    else
+      {
+	print_song(list);
+	list = list->next;
+      }
   }
 }
 
@@ -80,6 +84,11 @@ void print_artist_help(struct song* list, char * artist)
     }
   
   print_list_end(list, end);
+}
+
+void print_letter(struct song* lib[], char* letter)
+{
+  print_list(lib[index_of(letter)]);
 }
 
 void shuffle_list(struct song* list) {
