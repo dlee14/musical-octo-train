@@ -90,3 +90,21 @@ void print_letter(struct song* lib[], char* letter)
 {
   print_list(lib[index_of(letter)]);
 }
+
+struct song* song_at(struct song* list, int n) {
+  int count = 0;
+  while(count != n) {
+    list = list->next;
+    count++;
+  }
+  return list;
+}
+
+int list_length(struct song* list) {
+  int count = 0;
+  while (list) {
+    count++;
+    list = list->next;
+  }
+  return count;
+}

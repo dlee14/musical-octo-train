@@ -131,22 +131,59 @@ void shuffle_lib(struct song* lib[]) {
   }
 }
 
-struct song* song_at(struct song* list, int n) {
-  int count = 0;
-  while(count != n) {
-    list = list->next;
-    count++;
-  }
-  return list;
+//remove a node
+void remove_node(struct song* lib[], char* artist, char* name)
+{
+  lib[index_of(artist)] = remove_node_help(lib[index_of(artist)], artist, name);
 }
 
-int list_length(struct song* list) {
-  int count = 0;
-  while (list) {
-    count++;
-    list = list->next;
+//removes a node in a list
+struct song* remove_node_help(struct song* head, char* artist, char* name)
+{
+  struct song_node *rest;
+  struct song_node *old_head;
+  //if the node being removed is the head
+  if (strcmp(head->artist, artist) == 0 && strcmp(head->name, name) == 0)
+    {
+    rest = head->next;
+    free(head);
+    return rest;
   }
-  return count;
+  old_head = head;
+  while (head->next)
+  {
+    if (strcmp(head->next->artist, artist) == 0 && strcmp(head->next->name, name) == 0)
+    {
+      rest = head->next->next;
+      free(head->next);
+      head->next = rest;
+      return old_head;
+    }
+    head = head->next;
+  }
+  return 0;
+}
+
+void free_lib(struct song* lib[])
+{
+  int i = 0;
+  while(i < 26)
+    {
+      lib[i] = free_lib_help(lib[i]);
+      i ++;
+    }
+}
+
+struct song* free_lib_help(struct song *ptr)
+{
+  struct song_node *old;
+  while (ptr)
+  {
+    old = ptr;
+    ptr = ptr->next;
+    free(old);
+  }
+  return 0;
 }
 
 //trash pile
