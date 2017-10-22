@@ -1,8 +1,5 @@
 //add headers!!
-#include <stdlib.h>
-#include <stdio.h>
-#include "time.h"
-#include <string.h>
+
 #include <ctype.h>
 #include <stdio.h>
 #include "head.h"
@@ -16,12 +13,6 @@ int index_of(char* s) {
 
   //find the address difference
   int index = ptr - alphabet;
-  /*
-  s = (char*)putchar(tolower((int)s));
-  printf("%d\n", s[0]-'a');
-  return s[0] - 'a';
-  */
-  return index;
 }
 
 void print_song(struct song* song) {
@@ -29,9 +20,18 @@ void print_song(struct song* song) {
 }
 
 void print_list(struct song* list) {
-  while(list) {
-    print_song(list);
-    list = list->next;
+  print_list_end(list, 0);
+}
+
+void print_list_end(struct song* list, struct song* end)
+{
+  while(list != end) {
+    if (!list){}
+    else
+      {
+	print_song(list);
+	list = list->next;
+      }
   }
 }
 
@@ -43,6 +43,7 @@ void print_lib(struct song* lib[]) {
   }
 }
 
+<<<<<<< HEAD
 //bad name
 void print_first_char(struct song* lib[], char* first_char) {
   print_list(lib[index_of(first_char)]);
@@ -58,6 +59,8 @@ void print_artist(struct song* lib[], char* artist) {
   }
 }
 
+=======
+>>>>>>> 9fc45b5c04d06fb059ccf2d3b70770617a8c9cb4
 int list_length(struct song* list) {
   int count = 0;
   while (list) {
@@ -74,6 +77,36 @@ struct song* song_at(struct song* list, int n) {
     count++;
   }
   return list;
+}
+
+//prints songlist after finding a specified artist
+//NOTE: Does not print the rest of the library, just the ll in the letter
+//the artist's name starts with
+void print_artist(struct song* lib[], char* artist)
+{
+  print_artist_help(find_artist(lib, artist), artist);
+}
+
+void print_artist_help(struct song* list, char * artist)
+{
+  struct song* end = create_node(list->next, list->name, list->artist);
+  //printf("%p, %p\n", end, list);
+  while(end)
+    {
+      if (strcmp(artist, end->artist)!=0)
+	{
+	  end->next = 0;
+	  break;
+	}
+      end = end->next;
+    }
+  
+  print_list_end(list, end);
+}
+
+void print_letter(struct song* lib[], char* letter)
+{
+  print_list(lib[index_of(letter)]);
 }
 
 void shuffle_list(struct song* list) {
